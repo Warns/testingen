@@ -1,19 +1,40 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import Nav from './app/nav/nav';
+import Generate from './app/generator';
+
+export default class App extends Component {
+  state = {
+    nameofApp: 'My Awesome App'
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Nav name={this.state.nameofApp} />
+        <Generate />
+        <View style={styles.textContainer}>
+          <Text>Earth</Text>
+        </View>
+        <View style={styles.textContainer}>
+          <Text>Mars</Text>
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: Platform.OS === 'android' ? 27 : 0
   },
+  textContainer: {
+    backgroundColor: 'blue',
+    width: '100%',
+    padding: 20,
+    marginBottom: 5
+  }
 });

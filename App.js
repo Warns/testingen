@@ -13,13 +13,13 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Nav name={this.state.nameofApp} />
-        <Generate />
         <View style={styles.textContainer}>
           <Text>Earth</Text>
         </View>
         <View style={styles.textContainer}>
           <Text>Mars</Text>
         </View>
+        <Generate />
       </View>
     );
   }

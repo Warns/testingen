@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
 
 import Nav from './app/nav/nav';
 import Generate from './app/generator';
@@ -20,6 +20,7 @@ export default class App extends Component {
           <Text>Mars</Text>
         </View>
         <Generate />
+        <StatusBar barStyle='dark-content' />
       </View>
     );
   }
@@ -28,8 +29,9 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingTop: Platform.OS === 'android' ? 27 : 0
+    paddingTop: StatusBar.currentHeight,
+    backgroundColor: '#fff'
+    // paddingTop: Platform.OS === 'android' ? 27 : 0
   },
   textContainer: {
     backgroundColor: 'blue',

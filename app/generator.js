@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
 const Generate = () => {
+  onPressAddNumber = () => {
+    console.log('trigger');
+  };
+
   return (
     <View style={styles.generate}>
-      <Text style={{ color: '#fff' }}>Add number</Text>
+      <Button
+        color='orange'
+        title='Add number'
+        accessibilityLabel='Yo check this out!'
+        onPress={onPressAddNumber}
+      />
     </View>
   );
 };

@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TouchableWithoutFeedback
+} from 'react-native';
 
-const Generate = () => {
-  onPressAddNumber = () => {
-    console.log('trigger');
-  };
-
+const Generate = props => {
   return (
-    <View style={styles.generate}>
-      <Button
-        color='orange'
-        title='Add number'
-        accessibilityLabel='Yo check this out!'
-        onPress={onPressAddNumber}
-      />
-    </View>
+    <TouchableWithoutFeedback onPress={() => props.add()}>
+      <View style={styles.generate}>
+        <Text style={{ color: '#fff' }}>Add Number</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

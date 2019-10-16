@@ -3,10 +3,30 @@ import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
 
 import Nav from './app/nav/nav';
 import Generate from './app/generator';
+import ListItem from './app/listitem';
 
 export default class App extends Component {
   state = {
-    nameofApp: 'My Awesome App'
+    nameofApp: 'My Awesome App',
+    random: [20, 837]
+  };
+
+  onAddRandom = () => {
+    const random = Math.floor(Math.random() * 100) + 1;
+    this.setState(prevState => {
+      return {
+        random: [...prevState.random, random]
+      };
+    });
+  };
+
+  onItemClickDelete = position => {
+    const newArray = this.state.random.filter((item, index) => {
+      return position != index;
+    });
+    this.setState({
+      random: newArray
+    });
   };
 
   render() {
@@ -19,7 +39,8 @@ export default class App extends Component {
         <View style={styles.textContainer}>
           <Text>Mars</Text>
         </View>
-        <Generate />
+        <Generate add={this.onAddRandom} />
+        <ListItem items={this.state.random} delete={this.onItemClickDelete} />
         <StatusBar barStyle='dark-content' />
       </View>
     );
